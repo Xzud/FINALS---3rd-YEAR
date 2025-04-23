@@ -35,36 +35,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+    <?php include './head.php'; ?>
 </head>
 
-<body>
+<body class="container py-5">
     <div class="wrapper">
-        <form method="POST" class="login box">
-            <h1>Login</h1>
-            <div>
-                <div class="pair">Username: <input type="text" name="username" id="username" required></div>
-                <?php if (isset($message)) { ?>
-                    <span class="error"><?= $message ?></span>
-                <?php } ?>
-                <div class="pair">Password: <input type="password" name="password" id="password" required></div>
-            </div>
-            <div class="btn-group">
-                <button type="submit" class="btn">Log in</button>
-                <span>or</span>
-                <a href="register.php">Register</a>
-            </div>
-        </form>
-    </div>
+        <div class="box w-[20rem]" >
+            <h2>Login</h2>
 
+            <form action="login.php" method="post" class="w-full">
+                <div class="mb-3">
+                    <input type="text" name="username" class="form-control" required placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" required placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a href="register.php" class="btn btn-link">Register</a>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

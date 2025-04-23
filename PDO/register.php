@@ -7,7 +7,7 @@ $message = '';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST['username'] ?? '');
     $password = trim($_POST['password'] ?? '');
-    
+
     $username = htmlspecialchars($username);
     $password = htmlspecialchars($password);
 
@@ -31,13 +31,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <?php
+    include "./head.php";
+    ?>
+</head>
 <!-- Simple registration form -->
-<form method="POST">
-    <h2>Register</h2>
-    <?php if ($message): ?>
-        <div style="color:red"><?= $message ?></div>
-    <?php endif; ?>
-    <input type="text" name="username" required placeholder="Username"><br>
-    <input type="password" name="password" required placeholder="Password"><br>
-    <button type="submit">Register</button>
-</form>
+
+<body class="container py-5 ">
+    <div class="wrapper">
+        <div class="box">
+            <h2 class="mb-3">Register</h2>
+
+            <form action="register.php" method="post" class="">
+                <div class="mb-3">
+                    <input type="text" name="username" class="form-control" required placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" required placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <a href="login.php" class="btn btn-link">Already have an account?</a>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -15,15 +15,13 @@ body{
     width: 100rem;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .box{
     box-shadow: 0px 1px 10px 1px #33333a50;
-}
-
-.login.box{
     display: flex;
     border-radius: 1rem;
     padding: 30px 20px;
@@ -32,14 +30,15 @@ body{
     justify-content: space-between;
 }
 
-.login .pair{
+
+.box .pair{
     display: flex;
     flex-direction: column;
     gap: 2px;
     width: 20rem;
 }
 
-.login .pair input{
+.box .pair input{
     height: 2rem;
     padding: 0 10px;
     border-radius: .5rem;
