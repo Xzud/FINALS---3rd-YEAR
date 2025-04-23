@@ -1,26 +1,30 @@
-<?php
-require_once './init.php';
-require_once './controllers/AuthController.php';
+<!DOCTYPE html>
+<html>
 
-$auth = new AuthController($db);
-if ($auth->isLoggedIn()) {
-    header("Location: dashboard.php");
-    exit;
-}
+<head>
+    <title>Login</title>
+    <?php include 'views/partials/head.php'; ?>
+</head>
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ($auth->login($_POST['email'], $_POST['password'])) {
-        header("Location: dashboard.php");
-    } else {
-        echo "Invalid credentials.";
-    }
-}
-?>
+<body class="container py-5">
+    <div class="wrapper">
+        <div class="box w-[20rem]" >
+            <h2>Login</h2>
+            <?php Flash::display('login_error', 'danger'); ?>
+            <?php Flash::display('register_success', 'success'); ?>
 
-<h2>Login</h2>
-<form method="post">
-    <input name="email" type="email" placeholder="Email" required><br>
-    <input name="password" type="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-</form>
-<a href="views/register.php">Register</a>
+            <form action="login.php" method="post" class="w-full">
+                <div class="mb-3">
+                    <input type="text" name="username" class="form-control" required placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" required placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a href="register.php" class="btn btn-link">Register</a>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

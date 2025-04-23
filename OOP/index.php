@@ -1,1 +1,3 @@
-<?php include './views/login.php'; ?>
+<?php
+header("Location: login.php");
+exit;

@@ -20,10 +20,8 @@ body{
 }
 
 .box{
-    box-shadow: 0px 1px 10px 1px #33333a50;
-}
-
-.login.box{
+    box-shadow: 0px 8px 8px 1px #33333a50;
+    border: 1px solid #333;
     display: flex;
     border-radius: 1rem;
     padding: 30px 20px;
@@ -32,14 +30,14 @@ body{
     justify-content: space-between;
 }
 
-.login .pair{
+.box .pair{
     display: flex;
     flex-direction: column;
     gap: 2px;
     width: 20rem;
 }
 
-.login .pair input{
+.box .pair input{
     height: 2rem;
     padding: 0 10px;
     border-radius: .5rem;
@@ -47,6 +45,10 @@ body{
 
 .error{
     color: rgb(241, 79, 79);
+    font-size: small;
+}
+.success{
+    color: rgb(1, 241, 41);
     font-size: small;
 }
 

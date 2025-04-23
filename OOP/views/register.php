@@ -1,24 +1,32 @@
-<?php
-require_once '../init.php';
-require_once '../controllers/AuthController.php';
+<!DOCTYPE html>
+<html lang="en">
 
-$auth = new AuthController($db);
-if ($auth->isLoggedIn()) {
-    header("Location: dashboard.php");
-    exit;
-}
+<head>
+    <?php
+    include './views/partials/head.php'
+    ?>
+    <title>Register</title>
+</head>
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $auth->register($_POST['name'], $_POST['email'], $_POST['password']);
-    header("Location: index.php");
-}
-?>
+<body class="container py-5 ">
+    <div class="wrapper">
+        <div class="box">
+            <h2 class="mb-3">Register</h2>
+            <?php Flash::display('register_success', 'success'); ?>
+            <?php Flash::display('register_error', 'danger'); ?>
 
-<h2>Register</h2>
-<form method="post">
-    <input name="name" placeholder="Name" required><br>
-    <input name="email" type="email" placeholder="Email" required><br>
-    <input name="password" type="password" placeholder="Password" required><br>
-    <button type="submit">Register</button>
-</form>
-<a href="../index.php">Login</a>
+            <form action="register.php" method="post" class="">
+                <div class="mb-3">
+                    <input type="text" name="username" class="form-control" required placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" required placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <a href="login.php" class="btn btn-link">Already have an account?</a>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

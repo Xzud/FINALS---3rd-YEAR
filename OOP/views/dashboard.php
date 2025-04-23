@@ -1,16 +1,14 @@
-<?php
-require_once '../init.php';
-require_once '../controllers/AuthController.php';
-
-$auth = new AuthController($db);
-if (!$auth->isLoggedIn()) {
-    header("Location: ../index.php");
-    exit;
-}
-
-$user = $_SESSION['user'];
-?>
-
-<h2>Welcome, <?= htmlspecialchars($user['name']) ?>!</h2>
-<p>Email: <?= htmlspecialchars($user['email']) ?></p>
-<a href="../logout.php">Logout</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <?php include 'views/partials/head.php'; ?>
+</head>
+<body class="container py-5">
+    <div class="wrapper flex flex-col">
+        <h2>Welcome, <?= htmlspecialchars($_SESSION['user']) ?>!</h2>
+        <p>This is your dashboard.</p>
+        <a href="logout.php" class="btn btn-danger">Logout</a>
+    </div>
+</body>
+</html>
