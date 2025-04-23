@@ -6,12 +6,31 @@ if (!isset($_SESSION['user'])) {
 }
 ?>
 
+<style>
+    .wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        flex-direction: column;
+    }
 
+    *{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
 
+    a{
+        padding: .5rem 1rem;
+        border-radius: .5rem;
+        background-color: #DD3B4B;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+    }
+</style>
 
-
-
-
-<h2>Welcome, <?= htmlspecialchars($_SESSION['user']) ?>!</h2>
-
-<p><a href="logout.php">Logout</a></p>
+<div class="wrapper">
+        
+    <h2>Welcome, <?= htmlspecialchars($_SESSION['user']) ?>!</h2>
+    <a href="logout.php">Logout</a>
+</div>

@@ -42,6 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             width: 100%;
             max-width: 400px;
+
+            display: flex;
+            flex-direction: column;
         }
         h2 {
             margin-bottom: 20px;
@@ -82,7 +85,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <form method="POST">
     <h2>Register</h2>
-    <input type="text" name="username" required placeholder="Username"><br>
-    <input type="password" name="password" required placeholder="Password"><br>
+    <div>   
+        <input type="text" name="username" required placeholder="Username"><br>
+        <input type="password" name="password" required placeholder="Password"><br>
+    </div>
     <button type="submit">Register</button>
+    <a href="./login.php">Already have an account?</a>
 </form>
