@@ -47,7 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="wrapper">
         <div class="box w-[20rem]" >
             <h2>Login</h2>
-
+            <?php if (isset($message)): ?>
+                <div class="message"><?= htmlspecialchars($message) ?></div>
+            <?php endif; ?>
             <form action="login.php" method="post" class="w-full">
                 <div class="mb-3">
                     <input type="text" name="username" class="form-control" required placeholder="Username">

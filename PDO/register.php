@@ -45,7 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="wrapper">
         <div class="box">
             <h2 class="mb-3">Register</h2>
-
+            <?php if (isset($message)): ?>
+                <div class="message"><?= htmlspecialchars($message) ?></div>
+            <?php endif; ?>
             <form action="register.php" method="post" class="">
                 <div class="mb-3">
                     <input type="text" name="username" class="form-control" required placeholder="Username">
