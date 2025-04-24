@@ -5,8 +5,8 @@ $message = '';
 $success = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     $check = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
     if (mysqli_num_rows($check) > 0) {
@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php elseif (isset($success)): ?>
             <div class="success"><?= htmlspecialchars($success) ?></div>
         <?php
-            endif;
+        endif;
         ?>
         <div>
             <input type="text" name="username" required placeholder="Username"><br>

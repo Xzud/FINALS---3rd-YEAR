@@ -31,6 +31,6 @@ if (!isset($_SESSION['user'])) {
 
 <div class="wrapper">
         
-    <h2>Welcome, <?= htmlspecialchars($_SESSION['user']) ?>!</h2>
+    <h2>Welcome, <?= $_SESSION['user'] ?>!</h2>
     <a href="logout.php">Logout</a>
 </div>
