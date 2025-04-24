@@ -11,26 +11,19 @@ if(isset($_SESSION['user'])){
 $message = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = trim($_POST['username'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $username = htmlspecialchars($username);
-    $password = htmlspecialchars($password);
-
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->execute([$username]);
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+    $stmt->execute([$username, $password]);
     $user = $stmt->fetch();
 
     if ($user) {
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['user'] = $user['username'];
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            $message = "Password incorrect!";
-        }
+        $_SESSION['user'] = $user['username'];
+        header("Location: dashboard.php");
+        exit();
     } else{
-        $message = "Username not found!";
+        $message = "Incorrect Credentials!";
     }
 }
 
@@ -48,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="box w-[20rem]" >
             <h2>Login</h2>
             <?php if (isset($message)): ?>
-                <div class="message"><?= htmlspecialchars($message) ?></div>
+                <div class="message"><?= $message ?></div>
             <?php endif; ?>
             <form action="login.php" method="post" class="w-full">
                 <div class="mb-3">

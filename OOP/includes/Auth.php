@@ -4,9 +4,8 @@ require_once "Database.php";
 
 class Auth extends Database {
     public function register($username, $password){
-        $passwordHash = password_hash($password, PASSWORD_BCRYPT);
         $stmt = $this->conn->prepare("INSERT INTO users (username, password) VALUES (?,?)");
-        $stmt->bind_param("ss", $username, $passwordHash);
+        $stmt->bind_param("ss", $username, $password);
         return $stmt->execute();
     }
 

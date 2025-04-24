@@ -5,11 +5,9 @@ require 'db_conn.php';
 $message = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = trim($_POST['username'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $username = htmlspecialchars($username);
-    $password = htmlspecialchars($password);
 
     if ($username && $password) {
         $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
@@ -18,9 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($stmt->fetch()) {
             $message = "Username already taken.";
         } else {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-            $stmt->execute([$username, $hashedPassword]);
+            $stmt->execute([$username, $password]);
             $_SESSION['user'] = $username;
             header("Location: dashboard.php");
             exit();

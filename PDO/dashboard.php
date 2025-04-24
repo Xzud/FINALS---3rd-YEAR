@@ -16,7 +16,7 @@ if(!isset($_SESSION['user'])){
 </head>
 <body class="container py-5">
     <div class="wrapper flex flex-col">
-        <h2>Welcome, <?= htmlspecialchars($_SESSION['user']) ?>!</h2>
+        <h2>Welcome, <?= $_SESSION['user'] ?>!</h2>
         <p>This is your dashboard.</p>
         
     <form action="logout.php" method="POST">
