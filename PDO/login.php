@@ -57,4 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 </body>
 
+<a href="/index.php" style="position:absolute; top:10px; left:10px;">Home</a>
+
 </html>

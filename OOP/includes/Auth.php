@@ -10,19 +10,14 @@ class Auth extends Database {
     }
 
     public function login($username, $password){
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+        $stmt->bind_param("ss", $username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
-
         if($user){
-            if(password_verify($password, $user['password'])){
-                $_SESSION['user'] = $user['username'];
-                return true;
-            }else{
-                return false;
-            }
+            $_SESSION['user'] = $user['username'];
+            return true;
         }else{
             return false;
         }

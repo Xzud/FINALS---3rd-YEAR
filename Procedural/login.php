@@ -84,8 +84,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php if (isset($message)): ?>
         <div class="message"><?= htmlspecialchars($message) ?></div>
     <?php endif; ?>
-    <input type="text" name="username" required placeholder="Username">
+    <input type="text" name="username" required placeholder="Username" >
     <input type="password" name="password" required placeholder="Password">
     <button type="submit">Login</button>
     <a href="./register.php">Register here!</a>
 </form>
+
+<a href="/index.php" style="position:absolute; top:10px; left:10px;">Home</a>
+</body>

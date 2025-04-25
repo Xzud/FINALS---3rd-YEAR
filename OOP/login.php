@@ -7,6 +7,7 @@ $auth = new Auth();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($auth->login($_POST['username'], $_POST['password'])) {
+        
         header("Location: dashboard.php");
         exit;
     } else {
